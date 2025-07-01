@@ -1,0 +1,156 @@
+{
+  "navigationItems": [
+    { "id": "my-details", "label": "My Details" },
+    { "id": "company-profile", "label": "Company Profile" },
+    { "id": "appearance", "label": "Appearance" },
+    { "id": "team", "label": "Team" },
+    { "id": "billing-plan", "label": "Billing Plan" },
+    { "id": "notifications", "label": "Notifications" },
+    { "id": "security", "label": "Security" },
+    { "id": "integrations", "label": "Integrations" }
+  ],
+  "countries": [
+    { "value": "", "label": "Select Country" },
+    { "value": "US", "label": "United States" },
+    { "value": "CA", "label": "Canada" },
+    { "value": "UK", "label": "United Kingdom" },
+    { "value": "AU", "label": "Australia" },
+    { "value": "DE", "label": "Germany" },
+    { "value": "FR", "label": "France" },
+    { "value": "JP", "label": "Japan" },
+    { "value": "IN", "label": "India" },
+    { "value": "BR", "label": "Brazil" },
+    { "value": "MX", "label": "Mexico" },
+    { "value": "IT", "label": "Italy" },
+    { "value": "ES", "label": "Spain" },
+    { "value": "NL", "label": "Netherlands" },
+    { "value": "SE", "label": "Sweden" },
+    { "value": "NO", "label": "Norway" },
+    { "value": "DK", "label": "Denmark" },
+    { "value": "FI", "label": "Finland" },
+    { "value": "CH", "label": "Switzerland" },
+    { "value": "AT", "label": "Austria" },
+    { "value": "BE", "label": "Belgium" }
+  ],
+  "countryCodes": [
+    { "value": "US", "label": "US (+1)", "code": "+1" },
+    { "value": "IN", "label": "IN (+91)", "code": "+91" },
+    { "value": "UK", "label": "UK (+44)", "code": "+44" },
+    { "value": "CA", "label": "CA (+1)", "code": "+1" },
+    { "value": "AU", "label": "AU (+61)", "code": "+61" },
+    { "value": "DE", "label": "DE (+49)", "code": "+49" },
+    { "value": "FR", "label": "FR (+33)", "code": "+33" },
+    { "value": "JP", "label": "JP (+81)", "code": "+81" },
+    { "value": "BR", "label": "BR (+55)", "code": "+55" },
+    { "value": "MX", "label": "MX (+52)", "code": "+52" },
+    { "value": "IT", "label": "IT (+39)", "code": "+39" },
+    { "value": "ES", "label": "ES (+34)", "code": "+34" },
+    { "value": "NL", "label": "NL (+31)", "code": "+31" },
+    { "value": "SE", "label": "SE (+46)", "code": "+46" },
+    { "value": "NO", "label": "NO (+47)", "code": "+47" },
+    { "value": "DK", "label": "DK (+45)", "code": "+45" },
+    { "value": "FI", "label": "FI (+358)", "code": "+358" },
+    { "value": "CH", "label": "CH (+41)", "code": "+41" },
+    { "value": "AT", "label": "AT (+43)", "code": "+43" },
+    { "value": "BE", "label": "BE (+32)", "code": "+32" }
+  ],
+  "timezones": [
+    { "value": "", "label": "Select Timezone" },
+    {
+      "value": "UTC-12:00",
+      "label": "(UTC-12:00) International Date Line West"
+    },
+    {
+      "value": "UTC-11:00",
+      "label": "(UTC-11:00) Coordinated Universal Time-11"
+    },
+    { "value": "UTC-10:00", "label": "(UTC-10:00) Hawaii" },
+    { "value": "UTC-09:00", "label": "(UTC-09:00) Alaska" },
+    { "value": "UTC-08:00", "label": "(UTC-08:00) Pacific Time (US & Canada)" },
+    {
+      "value": "UTC-07:00",
+      "label": "(UTC-07:00) Mountain Time (US & Canada)"
+    },
+    { "value": "UTC-06:00", "label": "(UTC-06:00) Central Time (US & Canada)" },
+    { "value": "UTC-05:00", "label": "(UTC-05:00) Eastern Time (US & Canada)" },
+    { "value": "UTC-04:00", "label": "(UTC-04:00) Atlantic Time (Canada)" },
+    { "value": "UTC-03:00", "label": "(UTC-03:00) Brazil" },
+    {
+      "value": "UTC-02:00",
+      "label": "(UTC-02:00) Coordinated Universal Time-02"
+    },
+    { "value": "UTC-01:00", "label": "(UTC-01:00) Azores" },
+    { "value": "UTC+00:00", "label": "(UTC+00:00) Greenwich Mean Time" },
+    { "value": "UTC+01:00", "label": "(UTC+01:00) Central European Time" },
+    { "value": "UTC+02:00", "label": "(UTC+02:00) Eastern European Time" },
+    { "value": "UTC+03:00", "label": "(UTC+03:00) Moscow" },
+    { "value": "UTC+04:00", "label": "(UTC+04:00) Dubai" },
+    { "value": "UTC+05:00", "label": "(UTC+05:00) Pakistan" },
+    { "value": "UTC+05:30", "label": "(UTC+05:30) India Standard Time" },
+    { "value": "UTC+06:00", "label": "(UTC+06:00) Bangladesh" },
+    { "value": "UTC+07:00", "label": "(UTC+07:00) Bangkok" },
+    { "value": "UTC+08:00", "label": "(UTC+08:00) China Standard Time" },
+    { "value": "UTC+09:00", "label": "(UTC+09:00) Japan Standard Time" },
+    { "value": "UTC+10:00", "label": "(UTC+10:00) Australian Eastern Time" },
+    { "value": "UTC+11:00", "label": "(UTC+11:00) Solomon Islands" },
+    { "value": "UTC+12:00", "label": "(UTC+12:00) New Zealand" }
+  ],
+  "passwordRequirements": [
+    {
+      "id": "length",
+      "text": "Must be at least 8 characters",
+      "isValid": true
+    },
+    {
+      "id": "special",
+      "text": "Must contain one special character",
+      "isValid": true
+    }
+  ],
+  "textFormats": [
+    { "value": "regular", "label": "Regular" },
+    { "value": "arial", "label": "Arial" },
+    { "value": "helvetica", "label": "Helvetica" },
+    { "value": "times", "label": "Times New Roman" },
+    { "value": "georgia", "label": "Georgia" },
+    { "value": "verdana", "label": "Verdana" },
+    { "value": "courier", "label": "Courier New" },
+    { "value": "calibri", "label": "Calibri" },
+    { "value": "cambria", "label": "Cambria" }
+  ],
+  "formLabels": {
+    "personalInformation": "Personal Information",
+    "personalInformationSubtext": "Update your photo and personal details here.",
+    "name": "Name",
+    "email": "Email",
+    "yourPhoto": "Your Photo",
+    "yourPhotoSubtext": "This will be displayed on your profile.",
+    "role": "Role",
+    "roleNote": "Please note the role can be changed through Settings>Team>Edit Roles,",
+    "roleLinkText": "click here to change the role",
+    "country": "Country",
+    "mobileNumber": "Mobile Number",
+    "timezone": "Timezone",
+    "bio": "Bio",
+    "bioSubtext": "Write a short introduction",
+    "changePassword": "Change Password",
+    "oldPassword": "Old Password",
+    "newPassword": "New Password"
+  },
+  "placeholders": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Enter your email",
+    "role": "Admin",
+    "mobileNumber": "Enter your mobile number",
+    "bio": "Tell us about yourself...",
+    "oldPassword": "Enter old password",
+    "newPassword": "Enter new password"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "verify": "Verify",
+    "resetPassword": "Reset password"
+  }
+}

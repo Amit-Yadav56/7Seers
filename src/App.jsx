@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import Settings from "./Settings";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState("dashboard");
+  const [currentPage, setCurrentPage] = useState("settings");
   const [searchQuery, setSearchQuery] = useState("");
 
   const toggleSidebar = () => {
@@ -22,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen">
       {/* Sidebar */}
       <Sidebar
         isOpen={sidebarOpen}
@@ -32,7 +33,7 @@ function App() {
       />
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-w-[70vw]">
+      <div className="flex-1 flex flex-col min-w-[70vw] p-6">
         {/* Header */}
         <Header
           currentPage={currentPage}
@@ -41,24 +42,8 @@ function App() {
         />
 
         {/* Page Content */}
-        <div className="flex-1 p-6">
-          <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-            {searchQuery && (
-              <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">
-                  Search Results
-                </h3>
-                <p className="text-blue-700">
-                  Currently searching for:{" "}
-                  <span className="font-medium">"{searchQuery}"</span>
-                </p>
-                <p className="text-sm text-blue-600 mt-1">
-                  This is where your search results would appear in a real
-                  application.
-                </p>
-              </div>
-            )}
-          </div>
+        <div className="flex-1">
+          <Settings />
         </div>
       </div>
     </div>

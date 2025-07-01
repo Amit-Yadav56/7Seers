@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  searchIcon,
   dashboardIcon,
   productsIcon,
   customberIcon,
@@ -10,9 +9,9 @@ import {
   supportIcon,
   upDownIcon,
 } from "../assets/icons";
+import SearchBar from "./SearchBar";
 
 const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [showStorageNotification, setShowStorageNotification] = useState(true);
 
   const menuItems = [
@@ -40,16 +39,12 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
     }
   };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
   return (
     <>
       {/* Mobile Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 z-40 md:hidden bg-white/30 backdrop-blur-sm"
           onClick={onToggle}
         />
       )}
@@ -57,11 +52,11 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
       {/* Sidebar */}
       <div
         className={`
-          fixed left-0 top-0 h-screen w-auto z-50 transform transition-transform duration-300 ease-in-out
-          bg-white text-black shadow-2xl border-r border-gray-200
+          fixed left-0 top-0 h-screen w-auto transform transition-transform duration-300 ease-in-out
+          bg-white text-black border-r border-gray-200
           grid grid-rows-[auto_auto_1fr_auto]
           lg:relative lg:translate-x-0
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          ${isOpen ? "translate-x-0 z-40" : "-translate-x-full"}
         `}
       >
         {/* Header Section with Profile Pic */}
@@ -83,21 +78,7 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
 
         {/* Search Bar Section */}
         <div className="p-5">
-          <div className="relative flex items-center rounded-md px-4 border border-[#D5D7DA]">
-            <span className="text-gray-600 mr-3 size-5">
-              <img src={searchIcon} alt="search" />
-            </span>
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              className="bg-transparent border-none outline-none text-black py-3 flex-1 placeholder-gray-500 w-[80%]"
-            />
-            <span className="text-[#717680] font-medium  w-auto h-full border border-[#E9EAEB] rounded-xs py-[1px] px-1">
-              ⌘K
-            </span>
-          </div>
+          <SearchBar />
         </div>
 
         {/* Menu Items Section */}
