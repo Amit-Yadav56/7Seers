@@ -15,7 +15,7 @@ const InputBox = ({
   const baseClasses =
     "w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 transition-colors";
   const normalClasses =
-    "border-gray-300 focus:ring-green-500 focus:border-transparent";
+    "border-gray-300 hover:ring-2 hover:ring-green-500 focus:ring-green-500 focus:border-transparent";
   const errorClasses = "border-red-500 focus:ring-red-500";
   const disabledClasses = "bg-gray-100 cursor-not-allowed";
 

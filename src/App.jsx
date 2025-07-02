@@ -6,7 +6,6 @@ import Settings from "./Settings";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("settings");
-  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -16,12 +15,6 @@ function App() {
     setCurrentPage(pageId);
     console.log(`Navigated to: ${pageId}`);
   };
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    console.log(`Searching for: ${query}`);
-  };
-
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -35,11 +28,7 @@ function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-[70vw] p-6">
         {/* Header */}
-        <Header
-          currentPage={currentPage}
-          onToggleSidebar={toggleSidebar}
-          onSearch={handleSearch}
-        />
+        <Header currentPage={currentPage} onToggleSidebar={toggleSidebar} />
 
         {/* Page Content */}
         <div className="flex-1">

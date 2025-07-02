@@ -5,8 +5,7 @@
     { "id": "appearance", "label": "Appearance" },
     { "id": "team", "label": "Team" },
     { "id": "billing-plan", "label": "Billing Plan" },
-    { "id": "notifications", "label": "Notifications" },
-    { "id": "security", "label": "Security" },
+    { "id": "notifications", "label": "Notifications", "notificationCount": 2 },
     { "id": "integrations", "label": "Integrations" }
   ],
   "countries": [
@@ -55,45 +54,195 @@
     { "value": "BE", "label": "BE (+32)", "code": "+32" }
   ],
   "timezones": [
-    { "value": "", "label": "Select Timezone" },
+    {
+      "value": "",
+      "label": "Select Timezone",
+      "name": "",
+      "abbreviation": "",
+      "utc": ""
+    },
     {
       "value": "UTC-12:00",
-      "label": "(UTC-12:00) International Date Line West"
+      "label": "International Date Line West",
+      "name": "International Date Line West",
+      "abbreviation": "IDLW",
+      "utc": "UTC-12:00"
     },
     {
       "value": "UTC-11:00",
-      "label": "(UTC-11:00) Coordinated Universal Time-11"
+      "label": "Coordinated Universal Time-11",
+      "name": "Coordinated Universal Time-11",
+      "abbreviation": "UTC-11",
+      "utc": "UTC-11:00"
     },
-    { "value": "UTC-10:00", "label": "(UTC-10:00) Hawaii" },
-    { "value": "UTC-09:00", "label": "(UTC-09:00) Alaska" },
-    { "value": "UTC-08:00", "label": "(UTC-08:00) Pacific Time (US & Canada)" },
+    {
+      "value": "UTC-10:00",
+      "label": "Hawaii Standard Time",
+      "name": "Hawaii Standard Time",
+      "abbreviation": "HST",
+      "utc": "UTC-10:00"
+    },
+    {
+      "value": "UTC-09:00",
+      "label": "Alaska Standard Time",
+      "name": "Alaska Standard Time",
+      "abbreviation": "AKST",
+      "utc": "UTC-09:00"
+    },
+    {
+      "value": "UTC-08:00",
+      "label": "Pacific Standard Time",
+      "name": "Pacific Standard Time",
+      "abbreviation": "PST",
+      "utc": "UTC-08:00"
+    },
     {
       "value": "UTC-07:00",
-      "label": "(UTC-07:00) Mountain Time (US & Canada)"
+      "label": "Mountain Standard Time",
+      "name": "Mountain Standard Time",
+      "abbreviation": "MST",
+      "utc": "UTC-07:00"
     },
-    { "value": "UTC-06:00", "label": "(UTC-06:00) Central Time (US & Canada)" },
-    { "value": "UTC-05:00", "label": "(UTC-05:00) Eastern Time (US & Canada)" },
-    { "value": "UTC-04:00", "label": "(UTC-04:00) Atlantic Time (Canada)" },
-    { "value": "UTC-03:00", "label": "(UTC-03:00) Brazil" },
+    {
+      "value": "UTC-06:00",
+      "label": "Central Standard Time",
+      "name": "Central Standard Time",
+      "abbreviation": "CST",
+      "utc": "UTC-06:00"
+    },
+    {
+      "value": "UTC-05:00",
+      "label": "Eastern Standard Time",
+      "name": "Eastern Standard Time",
+      "abbreviation": "EST",
+      "utc": "UTC-05:00"
+    },
+    {
+      "value": "UTC-04:00",
+      "label": "Atlantic Standard Time",
+      "name": "Atlantic Standard Time",
+      "abbreviation": "AST",
+      "utc": "UTC-04:00"
+    },
+    {
+      "value": "UTC-03:00",
+      "label": "Brazil Standard Time",
+      "name": "Brazil Standard Time",
+      "abbreviation": "BRT",
+      "utc": "UTC-03:00"
+    },
     {
       "value": "UTC-02:00",
-      "label": "(UTC-02:00) Coordinated Universal Time-02"
+      "label": "Coordinated Universal Time-02",
+      "name": "Coordinated Universal Time-02",
+      "abbreviation": "UTC-02",
+      "utc": "UTC-02:00"
     },
-    { "value": "UTC-01:00", "label": "(UTC-01:00) Azores" },
-    { "value": "UTC+00:00", "label": "(UTC+00:00) Greenwich Mean Time" },
-    { "value": "UTC+01:00", "label": "(UTC+01:00) Central European Time" },
-    { "value": "UTC+02:00", "label": "(UTC+02:00) Eastern European Time" },
-    { "value": "UTC+03:00", "label": "(UTC+03:00) Moscow" },
-    { "value": "UTC+04:00", "label": "(UTC+04:00) Dubai" },
-    { "value": "UTC+05:00", "label": "(UTC+05:00) Pakistan" },
-    { "value": "UTC+05:30", "label": "(UTC+05:30) India Standard Time" },
-    { "value": "UTC+06:00", "label": "(UTC+06:00) Bangladesh" },
-    { "value": "UTC+07:00", "label": "(UTC+07:00) Bangkok" },
-    { "value": "UTC+08:00", "label": "(UTC+08:00) China Standard Time" },
-    { "value": "UTC+09:00", "label": "(UTC+09:00) Japan Standard Time" },
-    { "value": "UTC+10:00", "label": "(UTC+10:00) Australian Eastern Time" },
-    { "value": "UTC+11:00", "label": "(UTC+11:00) Solomon Islands" },
-    { "value": "UTC+12:00", "label": "(UTC+12:00) New Zealand" }
+    {
+      "value": "UTC-01:00",
+      "label": "Azores Standard Time",
+      "name": "Azores Standard Time",
+      "abbreviation": "AZOT",
+      "utc": "UTC-01:00"
+    },
+    {
+      "value": "UTC+00:00",
+      "label": "Greenwich Mean Time",
+      "name": "Greenwich Mean Time",
+      "abbreviation": "GMT",
+      "utc": "UTC+00:00"
+    },
+    {
+      "value": "UTC+01:00",
+      "label": "Central European Time",
+      "name": "Central European Time",
+      "abbreviation": "CET",
+      "utc": "UTC+01:00"
+    },
+    {
+      "value": "UTC+02:00",
+      "label": "Eastern European Time",
+      "name": "Eastern European Time",
+      "abbreviation": "EET",
+      "utc": "UTC+02:00"
+    },
+    {
+      "value": "UTC+03:00",
+      "label": "Moscow Standard Time",
+      "name": "Moscow Standard Time",
+      "abbreviation": "MSK",
+      "utc": "UTC+03:00"
+    },
+    {
+      "value": "UTC+04:00",
+      "label": "Gulf Standard Time",
+      "name": "Gulf Standard Time",
+      "abbreviation": "GST",
+      "utc": "UTC+04:00"
+    },
+    {
+      "value": "UTC+05:00",
+      "label": "Pakistan Standard Time",
+      "name": "Pakistan Standard Time",
+      "abbreviation": "PKT",
+      "utc": "UTC+05:00"
+    },
+    {
+      "value": "UTC+05:30",
+      "label": "India Standard Time",
+      "name": "India Standard Time",
+      "abbreviation": "IST",
+      "utc": "UTC+05:30"
+    },
+    {
+      "value": "UTC+06:00",
+      "label": "Bangladesh Standard Time",
+      "name": "Bangladesh Standard Time",
+      "abbreviation": "BST",
+      "utc": "UTC+06:00"
+    },
+    {
+      "value": "UTC+07:00",
+      "label": "Indochina Time",
+      "name": "Indochina Time",
+      "abbreviation": "ICT",
+      "utc": "UTC+07:00"
+    },
+    {
+      "value": "UTC+08:00",
+      "label": "China Standard Time",
+      "name": "China Standard Time",
+      "abbreviation": "CST",
+      "utc": "UTC+08:00"
+    },
+    {
+      "value": "UTC+09:00",
+      "label": "Japan Standard Time",
+      "name": "Japan Standard Time",
+      "abbreviation": "JST",
+      "utc": "UTC+09:00"
+    },
+    {
+      "value": "UTC+10:00",
+      "label": "Australian Eastern Standard Time",
+      "name": "Australian Eastern Standard Time",
+      "abbreviation": "AEST",
+      "utc": "UTC+10:00"
+    },
+    {
+      "value": "UTC+11:00",
+      "label": "Solomon Islands Time",
+      "name": "Solomon Islands Time",
+      "abbreviation": "SBT",
+      "utc": "UTC+11:00"
+    },
+    {
+      "value": "UTC+12:00",
+      "label": "New Zealand Standard Time",
+      "name": "New Zealand Standard Time",
+      "abbreviation": "NZST",
+      "utc": "UTC+12:00"
+    }
   ],
   "passwordRequirements": [
     {
@@ -122,18 +271,19 @@
     "personalInformation": "Personal Information",
     "personalInformationSubtext": "Update your photo and personal details here.",
     "name": "Name",
-    "email": "Email",
+    "email": "Email address",
     "yourPhoto": "Your Photo",
     "yourPhotoSubtext": "This will be displayed on your profile.",
     "role": "Role",
-    "roleNote": "Please note the role can be changed through Settings>Team>Edit Roles,",
-    "roleLinkText": "click here to change the role",
+    "roleNote": "Please note the role can be changed through",
+    "roleLinkText": "click here ",
     "country": "Country",
     "mobileNumber": "Mobile Number",
     "timezone": "Timezone",
     "bio": "Bio",
     "bioSubtext": "Write a short introduction",
     "changePassword": "Change Password",
+    "changePasswordNote": "Your new password must be different to previously used passwords.",
     "oldPassword": "Old Password",
     "newPassword": "New Password"
   },

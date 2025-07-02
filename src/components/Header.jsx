@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 
-const Header = ({ currentPage, onToggleSidebar, onSearch }) => {
+const Header = ({ currentPage, onToggleSidebar }) => {
   return (
-    <header className="bg-white sticky top-0 z-30">
+    <header className="bg-white relative top-0 z-30">
       <div className="flex items-center justify-between">
         {/* Left side - Mobile toggle + Page title */}
         <div className="flex items-center gap-4">
           {/* Mobile hamburger menu */}
           <button
             onClick={onToggleSidebar}
-            className="lg:hidden p-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200 shadow-md"
+            className="lg:hidden p-2 rounded-lg bg-[#099250] text-white hover:bg-green-400 transition-colors duration-200 shadow-md"
           >
             <svg
               className="w-5 h-5"
@@ -30,7 +30,7 @@ const Header = ({ currentPage, onToggleSidebar, onSearch }) => {
           {/* Page title with icon */}
           <div className="flex items-center gap-3">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-800 capitalize">
+              <h1 className="text-xl md:text-2xl font-semibold text-gray-800 capitalize">
                 {currentPage}
               </h1>
             </div>

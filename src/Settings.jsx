@@ -9,10 +9,15 @@ import {
   linkIcon,
   dottedListIcon,
   numberedListIcon,
+  helpIcon,
+  timeIcon,
 } from "./assets/icons";
 
 const Settings = () => {
   const [selectedSection, setSelectedSection] = useState("my-details");
+  const [isTimezoneOpen, setIsTimezoneOpen] = useState(false);
+  const [showTimezoneTooltip, setShowTimezoneTooltip] = useState(false);
+  const [showPhotoTooltip, setShowPhotoTooltip] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -73,22 +78,54 @@ const Settings = () => {
   const maxWords = 250;
   const remainingWords = maxWords - bioWordCount;
 
+  const formatTimezoneLabel = (timezone) => {
+    if (timezone.value === "")
+      return { name: timezone.label, abbreviation: "", utc: "" };
+
+    return {
+      name: timezone.name || timezone.label,
+      abbreviation: timezone.abbreviation || "",
+      utc: timezone.utc || timezone.value,
+    };
+  };
+
+  const getSelectedTimezoneDisplay = () => {
+    const selectedTimezone = timezones.find(
+      (tz) => tz.value === formData.timezone
+    );
+    if (!selectedTimezone || selectedTimezone.value === "") {
+      return "Select Timezone";
+    }
+    const formatted = formatTimezoneLabel(selectedTimezone);
+    return `${formatted.name} ${
+      formatted.abbreviation ? `(${formatted.abbreviation})` : ""
+    } ${formatted.utc}`;
+  };
+
   return (
-    <div className="max-w-6xl mx-auto mt-4">
+    <div className="mx-auto mt-4">
       {/* Navigation Section */}
       <nav className="mb-8 border-b border-gray-200">
         <ul className="flex list-none m-0 p-0 flex-wrap">
           {navigationItems.map((item) => (
             <li key={item.id}>
               <button
-                className={`bg-transparent mr-2.5 px-2.5 py-3 cursor-pointer text-sm font-medium transition-all duration-300 border-b-2 whitespace-nowrap ${
+                className={`bg-transparent mr-2.5 px-2.5 py-3 cursor-pointer text-sm font-semibold transition-all duration-300 border-b-2 whitespace-nowrap flex items-center gap-2 max-h-[46px] ${
                   selectedSection === item.id
-                    ? "text-green-700 border-green-700"
-                    : "text-gray-600 border-transparent hover:text-gray-800 hover:bg-gray-50"
+                    ? "text-[#087443] border-[#087443]"
+                    : "text-[#717680] border-transparent hover:text-gray-800 hover:bg-gray-50"
                 }`}
                 onClick={() => setSelectedSection(item.id)}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {item.notificationCount && (
+                  <div
+                    className="w-6 h-6 bg-[#FAFAFA] text-[#414651] rounded-full flex items-center justify-center text-xs font-medium
+                  border border-[#E9EAEB]"
+                  >
+                    {item.notificationCount}
+                  </div>
+                )}
               </button>
             </li>
           ))}
@@ -102,7 +139,7 @@ const Settings = () => {
             {/* Header Row - Personal Information and Buttons */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-b border-gray-200 gap-4 sm:gap-0">
               <div className="flex-1 md:mr-8">
-                <h2 className="text-xl font-semibold text-gray-800 grid ">
+                <h2 className="text-lg font-semibold text-gray-800 grid ">
                   {formLabels.personalInformation}
                   <span className="text-sm text-[#535862] font-normal">
                     {formLabels.personalInformationSubtext}
@@ -113,7 +150,7 @@ const Settings = () => {
                 <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors">
                   {buttons.cancel}
                 </button>
-                <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+                <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-[#099250] transition-colors">
                   {buttons.save}
                 </button>
               </div>
@@ -123,7 +160,7 @@ const Settings = () => {
             <div className="flex flex-col md:flex-row md:items-center py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
                 <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.name}
+                  {formLabels.name} <span className="text-[#099250]">*</span>
                 </label>
               </div>
               <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-sm sm:max-w-md md:max-w-lg">
@@ -146,7 +183,7 @@ const Settings = () => {
             <div className="flex flex-col md:flex-row md:items-center py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
                 <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.email}
+                  {formLabels.email} <span className="text-[#099250]">*</span>
                 </label>
               </div>
               <div className="flex-1 max-w-sm sm:max-w-md md:max-w-lg">
@@ -159,7 +196,7 @@ const Settings = () => {
                   required
                 />
               </div>
-              <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors whitespace-nowrap md:ml-4 max-w-sm sm:max-w-md md:max-w-lg">
+              <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-[#099250] transition-colors whitespace-nowrap md:ml-4 max-w-sm sm:max-w-md md:max-w-lg">
                 {buttons.verify}
               </button>
             </div>
@@ -167,8 +204,28 @@ const Settings = () => {
             {/* Your Photo Row */}
             <div className="flex flex-col md:flex-row md:items-start py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
-                <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.yourPhoto}
+                <label className="flex gap-1 text-sm font-medium text-gray-700">
+                  {formLabels.yourPhoto}{" "}
+                  <span className="text-[#099250]">*</span>
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setShowPhotoTooltip(true)}
+                    onMouseLeave={() => setShowPhotoTooltip(false)}
+                  >
+                    <img
+                      src={helpIcon}
+                      className="hover:cursor-pointer"
+                      alt=""
+                    />
+                    {showPhotoTooltip && (
+                      <div className="absolute top-0 left-0 transform -translate-y-full z-50">
+                        <div className="bg-black text-white text-xs px-3 py-2 rounded shadow-lg w-[150px] text-center">
+                          Please Upload your photo
+                        </div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1 border-4 border-transparent border-t-black"></div>
+                      </div>
+                    )}
+                  </div>
                 </label>
                 <p className="text-xs text-gray-500 mt-1">
                   {formLabels.yourPhotoSubtext}
@@ -185,8 +242,12 @@ const Settings = () => {
             {/* Change Password Row */}
             <div className="flex flex-col md:flex-row py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 w-[90%]">
                   {formLabels.changePassword}
+                  <br />
+                  <span className="text-[#535862]  font-normal">
+                    {formLabels.changePasswordNote}
+                  </span>
                 </label>
               </div>
               <div className="flex-1 space-y-4 max-w-sm sm:max-w-md md:max-w-lg">
@@ -230,7 +291,7 @@ const Settings = () => {
 
                 {/* Reset Button */}
                 <div className="pt-2">
-                  <button className="px-4 py-2 bg-[#087443] text-white rounded-md hover:bg-green-500 transition-colors">
+                  <button className="w-full px-4 py-2 bg-[#087443] text-white rounded-md hover:bg-green-500 transition-colors">
                     {buttons.resetPassword}
                   </button>
                 </div>
@@ -253,8 +314,14 @@ const Settings = () => {
                 />
                 <p className="text-xs text-gray-500 mt-2">
                   {formLabels.roleNote}
-                  <button className="text-green-600 hover:text-green-700 underline ml-1">
-                    {formLabels.roleLinkText}
+                  <span className="font-bold">
+                    {" Settings>Team>Edit Roles,"}
+                  </span>
+                  <button>
+                    <span className="text-[#535862] font-bold underline ml-1">
+                      {formLabels.roleLinkText}
+                    </span>
+                    to change the role
                   </button>
                   .
                 </p>
@@ -265,7 +332,7 @@ const Settings = () => {
             <div className="flex flex-col md:flex-row md:items-center py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
                 <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.country}
+                  {formLabels.country} <span className="text-[#099250]">*</span>
                 </label>
               </div>
               <div className="flex-1 max-w-sm sm:max-w-md md:max-w-lg">
@@ -293,7 +360,8 @@ const Settings = () => {
             <div className="flex flex-col md:flex-row md:items-center py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
                 <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.mobileNumber}
+                  {formLabels.mobileNumber}{" "}
+                  <span className="text-[#099250]">*</span>
                 </label>
               </div>
               <div className="flex-1 max-w-sm sm:max-w-md md:max-w-lg">
@@ -326,7 +394,7 @@ const Settings = () => {
                   />
                 </div>
               </div>
-              <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors whitespace-nowrap md:ml-4">
+              <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-[#099250] transition-colors whitespace-nowrap md:ml-4">
                 {buttons.verify}
               </button>
             </div>
@@ -334,27 +402,95 @@ const Settings = () => {
             {/* Timezone Row */}
             <div className="flex flex-col md:flex-row md:items-center py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
-                <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.timezone}
+                <label className="flex gap-1 text-sm font-medium text-gray-700">
+                  {formLabels.timezone}{" "}
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setShowTimezoneTooltip(true)}
+                    onMouseLeave={() => setShowTimezoneTooltip(false)}
+                  >
+                    <img
+                      src={helpIcon}
+                      className="hover:cursor-pointer"
+                      alt=""
+                    />
+                    {showTimezoneTooltip && (
+                      <div className="absolute top-0 left-0 transform -translate-y-full z-50">
+                        <div className="bg-black text-white text-xs px-3 py-2 rounded shadow-lg w-[150px] text-center">
+                          Please enter your current timezone
+                        </div>
+                        <div className="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1 border-4 border-transparent border-t-black"></div>
+                      </div>
+                    )}
+                  </div>
                 </label>
               </div>
               <div className="flex-1 max-w-sm sm:max-w-md md:max-w-lg">
                 <div className="relative">
-                  <select
-                    name="timezone"
-                    value={formData.timezone}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-sm appearance-none"
+                  <button
+                    type="button"
+                    onClick={() => setIsTimezoneOpen(!isTimezoneOpen)}
+                    className="w-full px-3 py-2 pl-3 pr-10 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-sm text-left bg-white flex items-center"
                   >
-                    {timezones.map((timezone) => (
-                      <option key={timezone.value} value={timezone.value}>
-                        {timezone.label}
-                      </option>
-                    ))}
-                  </select>
+                    <img
+                      src={timeIcon}
+                      alt="time"
+                      className="w-4 h-4 mr-2 flex-shrink-0"
+                    />
+                    <span className="truncate">
+                      {getSelectedTimezoneDisplay()}
+                    </span>
+                  </button>
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                     <img src={downArrowIcon} alt="down arrow" />
                   </div>
+
+                  {isTimezoneOpen && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                      {timezones.map((timezone) => {
+                        const formatted = formatTimezoneLabel(timezone);
+                        return (
+                          <button
+                            key={timezone.value}
+                            type="button"
+                            onClick={() => {
+                              setFormData((prev) => ({
+                                ...prev,
+                                timezone: timezone.value,
+                              }));
+                              setIsTimezoneOpen(false);
+                            }}
+                            className="w-full px-3 py-2 text-left hover:bg-gray-50 focus:outline-none focus:bg-gray-50 flex items-center text-sm"
+                          >
+                            <img
+                              src={timeIcon}
+                              alt="time"
+                              className="w-4 h-4 mr-2 flex-shrink-0"
+                            />
+                            {timezone.value === "" ? (
+                              <span>{timezone.label}</span>
+                            ) : (
+                              <span>
+                                <span className="font-medium">
+                                  {formatted.name}
+                                </span>
+                                {formatted.abbreviation && (
+                                  <span className="font-medium">
+                                    {" "}
+                                    ({formatted.abbreviation})
+                                  </span>
+                                )}
+                                <span className="text-gray-600">
+                                  {" "}
+                                  {formatted.utc}
+                                </span>
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -363,7 +499,7 @@ const Settings = () => {
             <div className="flex flex-col md:flex-row md:items-start py-6 border-b border-gray-200 gap-4 md:gap-0">
               <div className="md:w-48 md:flex-shrink-0">
                 <label className="block text-sm font-medium text-gray-700">
-                  {formLabels.bio}
+                  {formLabels.bio} <span className="text-[#099250]">*</span>
                 </label>
                 <p className="text-xs text-gray-500 mt-1">
                   {formLabels.bioSubtext}
@@ -447,7 +583,7 @@ const Settings = () => {
                   />
 
                   {/* Word Counter */}
-                  <div className="flex items-center text-xs text-gray-500 mt-2">
+                  <div className="flex items-center text-xs text-gray-500">
                     <span className={remainingWords < 0 ? "text-red-500" : ""}>
                       {remainingWords < 0
                         ? `${Math.abs(remainingWords)} words over limit`
@@ -464,6 +600,14 @@ const Settings = () => {
             {navigationItems.find((item) => item.id === selectedSection)?.label}
           </div>
         )}
+      </div>
+      <div className="flex gap-3 flex-shrink-0 justify-end">
+        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors">
+          {buttons.cancel}
+        </button>
+        <button className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-[#099250] transition-colors">
+          {buttons.save}
+        </button>
       </div>
     </div>
   );

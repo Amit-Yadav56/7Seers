@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { uploadIcon } from "../assets/icons";
+import { fileUploadIcon, uploadIcon } from "../assets/icons";
 
 const ImageUpload = ({ onImageSelect, currentImage }) => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -68,7 +68,7 @@ const ImageUpload = ({ onImageSelect, currentImage }) => {
 
       {/* Upload area */}
       <div
-        className={`flex-1 border rounded-lg p-6 text-center cursor-pointer transition-colors ${
+        className={`flex-1 relative border rounded-lg p-6 text-center cursor-pointer transition-colors ${
           isDragOver
             ? "border-green-500 bg-green-50"
             : "border-gray-300 hover:border-[#16B364] hover:border-2"
@@ -91,15 +91,27 @@ const ImageUpload = ({ onImageSelect, currentImage }) => {
             <img src={uploadIcon} alt="" />
           </div>
           <div>
-            <p className="text-sm font-medium text-gray-700 mb-1">
-              {currentImage
-                ? "Click to change or drag and drop"
-                : "Click to upload or drag and drop"}
+            <p className="text-sm mb-1">
+              {currentImage ? (
+                <span className="font-medium text-gray-700">
+                  Click to change or drag and drop
+                </span>
+              ) : (
+                <span className="text-[#535862] font-normal">
+                  <span className="font-semibold text-[#087443]">
+                    Click to upload
+                  </span>{" "}
+                  or drag and drop
+                </span>
+              )}
             </p>
             <p className="text-xs text-gray-500">
               SVG, PNG, JPG or GIF (max 800x400px)
             </p>
           </div>
+        </div>
+        <div className="absolute top-[55%] -right-[5%]">
+          <img src={fileUploadIcon} alt="" />
         </div>
       </div>
     </div>

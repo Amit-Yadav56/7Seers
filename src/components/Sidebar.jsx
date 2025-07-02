@@ -55,7 +55,7 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
           fixed left-0 top-0 h-screen w-auto transform transition-transform duration-300 ease-in-out
           bg-white text-black border-r border-gray-200
           grid grid-rows-[auto_auto_1fr_auto]
-          lg:relative lg:translate-x-0
+          lg:sticky lg:translate-x-0
           ${isOpen ? "translate-x-0 z-40" : "-translate-x-full"}
         `}
       >
@@ -67,10 +67,7 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
               background:
                 "linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(10, 13, 18, 0.2) 100%)",
               boxShadow: `
-                0px 1px 2px 0px rgba(10, 13, 18, 0.06),
-                0px 1px 3px 0px rgba(10, 13, 18, 0.10),
-                0px 1px 1px -0.5px rgba(10, 13, 18, 0.13),
-                0px -0.5px 0.5px 0px rgba(10, 13, 18, 0.10) inset
+                0px -0.5px 20px 20px rgba(10, 13, 18, 0.10) inset
               `,
             }}
           ></div>
@@ -89,7 +86,7 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
                 key={item.id}
                 onClick={() => handleMenuClick(item.id)}
                 className={`
-                  w-full flex items-center gap-4 px-5 py-4 rounded-xl
+                  w-full flex items-center gap-4 px-5 py-2 rounded-xl
                   border transition-all duration-300
                   text-left font-semibold text-md tracking-wide text-[#414651]
                   animate-slideIn
@@ -122,7 +119,7 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
                   key={item.id}
                   onClick={() => handleMenuClick(item.id)}
                   className={`
-                    flex w-full items-center gap-4 px-5 py-4 rounded-xl
+                    flex w-full items-center gap-4 px-5 py-2 rounded-xl
                     border transition-all duration-300
                     text-left font-semibold text-md tracking-wide text-[#414651]
                     bg-transparent border-transparent hover:bg-gray-50 hover:border-gray-200
@@ -135,6 +132,14 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
                   <span className="font-semibold tracking-wide text-[#414651]">
                     {item.label}
                   </span>
+                  {item.id === "support" && (
+                    <div className="ml-auto flex items-center gap-1 px-2 py-1 border border-[#D5D7DA]  rounded-md">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-xs text-[#414651] font-medium">
+                        Online
+                      </span>
+                    </div>
+                  )}
                 </button>
               ))}
             </nav>
@@ -149,10 +154,10 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
                 ✕
               </button>
               <div className="pr-6">
-                <div className="text-sm font-medium text-gray-800 mb-1">
+                <div className="text-sm font-semibold text-gray-800 mb-1">
                   Used space
                 </div>
-                <div className="text-xs text-gray-600 mb-2">
+                <div className="text-sm text-[#535862] mb-2">
                   Your team has used 80% of your available space. Need more?
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -161,24 +166,26 @@ const Sidebar = ({ isOpen, onToggle, onPageChange, currentPage }) => {
                     style={{ width: "75%" }}
                   ></div>
                 </div>
-                <div className="flex gap-[5%] mt-2 font-semibold ">
+                <div className="flex gap-[5%] mt-2 font-semibold text-sm ">
                   <span className="text-[#535862]">Dismiss</span>
                   <span className="text-[#087443]">Upgrade Plan</span>
                 </div>
               </div>
             </div>
           )}
-          <div className="flex items-start gap-3 p-4  rounded-xl border border-gray-200">
-            <div className="w-11 h-11 rounded-full overflow-hidden border border-gray-300"></div>
+          <div className="flex items-start gap-3 p-4 rounded-xl border border-gray-200 relative">
+            <div className="w-11 h-11 rounded-full border relative border-gray-300">
+              <div className="absolute right-0 bottom-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+            </div>
             <div className="flex-1 min-w-0">
               <div className="font-semibold text-sm text-black truncate">
-                John Parker
+                Clara Smith
               </div>
-              <div className="text-xs text-gray-600 truncate">
-                john.parker@company.com
+              <div className="text-sm text-gray-600 truncate">
+                clara@bizclues.com
               </div>
             </div>
-            <div className="h-full">
+            <div className="h-full hover:cursor-pointer">
               <img src={upDownIcon} alt="" />
             </div>
           </div>

@@ -8,7 +8,12 @@ const SearchBar = () => {
   };
   return (
     <div>
-      <div className="relative flex items-center rounded-md px-4 border border-[#D5D7DA]">
+      <div
+        className="relative flex items-center rounded-md px-4 border border-[#D5D7DA]"
+        style={{
+          boxShadow: "0px 1px 2px 0px rgba(213, 215, 218, 1)",
+        }}
+      >
         <span className="text-gray-600 mr-3 size-5">
           <img src={searchIcon} alt="search" />
         </span>

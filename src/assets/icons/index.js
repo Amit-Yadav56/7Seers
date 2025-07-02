@@ -14,6 +14,9 @@ import linkIcon from "./linkIcon.png";
 import dottedListIcon from "./dottedList.png";
 import numberedListIcon from "./numberedList.png";
 import uploadIcon from "./uploadIcon.png";
+import helpIcon from "./helpIcon.svg";
+import timeIcon from "./timeIcon.png";
+import fileUploadIcon from "./fileUpload.png";
 export {
   customberIcon,
   dashboardIcon,
@@ -31,4 +34,7 @@ export {
   dottedListIcon,
   numberedListIcon,
   uploadIcon,
+  helpIcon,
+  timeIcon,
+  fileUploadIcon,
 };
